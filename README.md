@@ -2,6 +2,8 @@
 
 This repository contains a dockerized environment for algorithmic trading development with Conda, Kafka, and Vertica integration. It's designed to be used with Morph.so cloud for creating standardized snapshots that can be easily deployed.
 
+More products can be added.
+
 ## Components
 
 - **Conda**: Python package and environment management

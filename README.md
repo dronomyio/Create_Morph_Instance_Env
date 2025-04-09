@@ -1,5 +1,28 @@
 # Trading Environment Docker Setup
 
+scp build_env.sh to the morph VM instance 
+scp build_env.zip  <morph_instance>@ssh.cloud.morph.so:~/
+on VM
+unzip build_env.zip
+docker-compose up --build
+docker-compose down
+docker-compose up -d
+
+Then enter the Docker container 
+```
+# First, find your container ID
+docker ps
+
+# Then enter the container
+docker exec -it CONTAINER_ID bash
+
+# Now you can use Python and Conda inside the container
+python --version
+conda --version
+
+```
+
+
 This repository contains a dockerized environment for algorithmic trading development with Conda, Kafka, and Vertica integration. It's designed to be used with Morph.so cloud for creating standardized snapshots that can be easily deployed.
 
 More products can be added.

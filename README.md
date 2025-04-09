@@ -126,6 +126,26 @@ with vertica_python.connect(**conn_info) as connection:
         print(row)
 ```
 
+## How to Access Python and Conda inside the docker env
+## Enter the Docker container
+When you run docker-compose build, it creates a Docker container with Python and Conda installed inside that container, but these tools aren't automatically installed on the host VM itself.
+Think of Docker as a separate, isolated environment:
+The Dockerfile we created installs Python and Conda inside the container
+The host VM (where you're running commands as root) doesn't automatically get these tools
+```
+# First, find your container ID
+docker ps
+
+# Then enter the container
+docker exec -it CONTAINER_ID bash
+
+# Now you can use Python and Conda inside the container
+python --version
+conda --version
+
+```
+
+
 ## Troubleshooting
 
 - **Kafka Connection Issues**: Ensure the Kafka service is running with `docker-compose logs kafka`

@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  trading-environment:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: trading-environment
+    ports:
+      # Jupyter Lab
+      - "8888:8888"
+      # Kafka
+      - "9092:9092"
+      # Zookeeper
+      - "2181:2181"
+    volumes:
+      # Mount your local data directory
+      - ./data:/app/data
+      # Mount your notebooks directory
+      - ./notebooks:/app/notebooks
+    environment:
+      # Kafka configuration
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      # Add any other environment variables here
+    restart: unless-stopped
